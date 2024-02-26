@@ -88,7 +88,7 @@
 
     function generarAlumnos(){
         var cantidad = parseInt(document.getElementById("txtCantidad").value);
-        query = "USE sistema_escolar;<br>DELETE FROM alumnos;<br> INSERT INTO alumnos (matricula, apellido1, apellido2, nombres, correo, fecha_de_nacimiento) VALUES ";
+        query = "USE sistema_escolar;<br>DELETE FROM alumnos;<br> INSERT INTO alumnos (matricula, apellido1, apellido2, nombres, correo, fecha_nacimiento) VALUES ";
         for(var i = 0; i < cantidad; i++){
             var apellido1 = apellidos[Math.floor(Math.random() * apellidos.length)];
             var apellido2 = apellidos2[Math.floor(Math.random() * apellidos2.length)];
