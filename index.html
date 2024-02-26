@@ -98,6 +98,29 @@
         document.body.removeChild(contenidocsv);
     }
 
+    function generarjson(){
+        var cantidad = parseInt(document.getElementById("txtCantidad").value);
+        var contenido = "[";
+        for(var i = 0; i < cantidad; i++){
+            var apellido1 = apellidos[Math.floor(Math.random() * apellidos.length)];
+            var apellido2 = apellidos2[Math.floor(Math.random() * apellidos2.length)];
+            var nombre = nombres[Math.floor(Math.random() * nombres.length)];
+            var nombre1 = nombres[Math.floor(Math.random() * nombres.length)];
+            var correo = "a2024" + cantidad + i + "@dominio.edu.mx";
+            contenido += '{"matricula": 2024'+ (cantidad + i) + ',"apellido1": "' + apellido1 + '","apellido2": "' + apellido2 + '","nombres": "' 
+                                + nombre + ' ' + nombre1 + '","correo": "' + correo 
+            + '","fecha_nacimiento": "' + generarFecha(1930,2005) + '"},';
+        }
+        contenido = contenido.slice(0, -1) + "]";
+        var contenidojson = document.createElement("a");
+        contenidojson.setAttribute("href","data:text/plane;charset=UTF-8,"+encodeURIComponent(contenido));
+        contenidojson.setAttribute("download","alumnos.json");
+        contenidojson.style.display="none";
+        document.body.appendChild(contenidojson);
+        contenidojson.click();
+        document.body.removeChild(contenidojson);
+    }
+
     function generarFecha(anioInicio, anioFin) {
         // Generar año, mes y día al azar
         const anio = Math.floor(Math.random() * (anioFin - anioInicio + 1)) + anioInicio;
